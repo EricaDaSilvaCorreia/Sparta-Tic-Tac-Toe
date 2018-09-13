@@ -1,21 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Your code here
-  document.addEventListener('DOMContentLoaded', () => {
-    // Your code here
+
+    //Object start
     const tic = {};
-    // tic.table = document.getElementsByTagName ('table');
-    // tic.row = document.getElementsByTagName ('tr');
+
+    //Object Properties
+
     tic.body = document.getElementsByTagName('body');
     tic.playerTurn = document.getElementsByClassName('playerTurn');
     console.log(tic.playerTurn);
 
-    console.log(tic.playerTurn);
+    tic.resetButton = document.getElementsByTagName('button');
+    console.log(tic.resetButton);
 
     tic.tile = document.getElementsByTagName('td');
     console.log(tic.tile);
 
     tic.turn = true;
 
+    // Object Methods
 
     tic.getTile = () => {
       for ( let i = 0; i < tic.tile.length; i++) {
@@ -25,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tic.tile[i].setAttribute('class', 'X');
             tic.tile[i].innerHTML = 'X';
             tic.playerTurn[0].innerHTML = "It O's turn";
-            // tic.playerOTurn();
             tic.turn = false;
 
             break;
@@ -33,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tic.tile[i].setAttribute('class', 'O');
             tic.tile[i].innerHTML = 'O';
             tic.playerTurn[0].innerHTML = "It X's turn";
-            // tic.playerOTurn();
             tic.turn = true;
 
             break;
@@ -41,21 +42,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
           }
 
-        });
-      }
-    }
+        }); // end of tic tile addEventListener
+      } // end of for loop
+    } //end of get tile
     tic.getTile();
 
-    tic.button = document.getElementsByTagName('button');
-    console.log(tic.button);
-    //
-    tic.button.addEventListener( 'click', (e) => {
-       for (j = 0; j < tic.tile.length; j++) {
-         tic.tile[j].setAttribute('class', '');
-         tic.tile[j].innerHTML = '';
-       }
-       // location.reload();
-     }
+    tic.reseter = () => {
+      tic.resetButton.addEventListener( 'click', (e) => {
+        for (let j = 0; j < tic.tile.length; j++) {
+          tic.tile[j].setAttribute('class', '');
+          tic.tile[j].innerHTML = '';
+        }//end of for loop
+      }//end of reset button addEventListener
+    };//end of reseter
+
+    tic.resetButton.addEventListener('click', (e) => {
+      tic.reseter();
+    }); // end of rest button addEventListener
+
+
+    //Win Statement
 
 
     tic.winInner1 = [tic.tile[0], tic.tile[1], tic.tile[2]];
@@ -69,35 +75,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tic.winArray = [tic.winInner1,tic.winInner2,tic.winInner3,tic.winInner4,tic.winInner5,tic.winInner6,tic.winInner7,tic.winInner8];
 
-    // for (let i = 0; i < tic.winArray.length; i++) {
-    //   tic.winArray[i]
-    //
-    //   for (let j = 0; j < tic.win.length; j++) {
-    //     array[i]
-    //   }
-    // }
 
-    //
-
-    //   if (tic.resetIt = true) {
-    //
-    //   }
-    // })
-    // tic.resetIt = true;
-
-    // while (tic.resetIt = true) {
-    //
-    // }
-
-    //
-    //
-    //
-
-
-
-
-
-
-
-
-  });
+}); //end doc addEventListener
